@@ -6,6 +6,9 @@ class Texto extends Component {
 
         const { value, handleChange } = this.props
 
+        let error = undefined;
+        if (value.length > 99) error = 'Erro, texto muito grande.'
+
         return (
             <label>
                 <textarea
@@ -13,6 +16,7 @@ class Texto extends Component {
                     value={value}
                     placeholder="digite o texto pro botão"
                     onChange={handleChange} />
+                <span>{error !== undefined ? error : ''}</span>
             </label>
         )
     }
