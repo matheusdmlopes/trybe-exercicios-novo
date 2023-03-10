@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Form.css';
+import Caixinha from './Components/Caixinha';
 
 class Form extends Component {
     constructor() {
@@ -24,50 +25,45 @@ class Form extends Component {
 
     render() {
         return (
-            <div>
-                <h1>titulo</h1>
-                <form className='form'>
-                    <fieldset>
-                        <label>
-                            selecione uma opção
-                            <select
-                                name='option'
-                                value={this.state.option}
-                                onChange={this.handleChange}>
-                                <option>opção 1</option>
-                                <option>opção 2</option>
-                                <option>opção 3</option>
-                            </select>
-                        </label>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="caixinha"
-                                value={this.state.caixinha}
-                                onChange={this.handleChange}
-                            /> bom dia
-                        </label>
-                        <br></br>
-                        <label>
-                            <textarea
-                                name="texto"
-                                value={this.state.texto}
-                                placeholder="digite o texto pro botão"
-                                onChange={this.handleChange} />
-                        </label>
-                        <label>
-                            <input
-                                type="button"
-                                name="botao"
-                                value={this.state.texto}
-                                onClick={this.handleChange} />
-                        </label>
-                        <label>
-                            <input type="file" />
-                        </label>
-                    </fieldset>
-                </form>
-            </div>
+            <>
+                <div>
+                    <h1>titulo</h1>
+                    <form className='form'>
+                        <fieldset>
+                            <label>
+                                selecione uma opção
+                                <select
+                                    name='option'
+                                    value={this.state.option}
+                                    onChange={this.handleChange}>
+                                    <option>opção 1</option>
+                                    <option>opção 2</option>
+                                    <option>opção 3</option>
+                                </select>
+                            </label>
+                            <Caixinha value={this.state.caixinha} handleChange={this.handleChange} />
+                            <br></br>
+                            <label>
+                                <textarea
+                                    name="texto"
+                                    value={this.state.texto}
+                                    placeholder="digite o texto pro botão"
+                                    onChange={this.handleChange} />
+                            </label>
+                            <label>
+                                <input
+                                    type="button"
+                                    name="botao"
+                                    value={this.state.texto}
+                                    onClick={this.handleChange} />
+                            </label>
+                            <label>
+                                <input type="file" />
+                            </label>
+                        </fieldset>
+                    </form>
+                </div>
+            </>
         )
     }
 }
