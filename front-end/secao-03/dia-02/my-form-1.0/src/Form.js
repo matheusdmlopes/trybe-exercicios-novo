@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './Form.css';
-import Caixinha from './Components/Caixinha';
+import Caixinha from './Caixinha';
+import Texto from './Texto';
+import Botao from './Botao';
+import Option from './Option';
 
 class Form extends Component {
     constructor() {
@@ -30,33 +33,11 @@ class Form extends Component {
                     <h1>titulo</h1>
                     <form className='form'>
                         <fieldset>
-                            <label>
-                                selecione uma opção
-                                <select
-                                    name='option'
-                                    value={this.state.option}
-                                    onChange={this.handleChange}>
-                                    <option>opção 1</option>
-                                    <option>opção 2</option>
-                                    <option>opção 3</option>
-                                </select>
-                            </label>
+                            <Option value={this.state.option} handleChange={this.handleChange} />
                             <Caixinha value={this.state.caixinha} handleChange={this.handleChange} />
                             <br></br>
-                            <label>
-                                <textarea
-                                    name="texto"
-                                    value={this.state.texto}
-                                    placeholder="digite o texto pro botão"
-                                    onChange={this.handleChange} />
-                            </label>
-                            <label>
-                                <input
-                                    type="button"
-                                    name="botao"
-                                    value={this.state.texto}
-                                    onClick={this.handleChange} />
-                            </label>
+                            <Texto value={this.state.texto} handleChange={this.handleChange} />
+                            <Botao value={this.state.texto} handleChange={this.handleChange} />
                             <label>
                                 <input type="file" />
                             </label>
