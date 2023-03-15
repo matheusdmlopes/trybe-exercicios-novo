@@ -10,13 +10,14 @@ class Form extends Component {
         super()
 
         this.handleChange = this.handleChange.bind(this)
+        this.handleError = this.handleError.bind(this)
 
         this.state = {
             option: '',
             caixinha: false,
             botao: '',
             texto: '',
-            formularioComErros: false
+            formularioComErros: true
         }
     }
 
@@ -43,10 +44,14 @@ class Form extends Component {
         const { name } = target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
 
-        this.setState({ [name]: value })
+        this.setState({ [name]: value },
+            this.handleError)
     }
 
     render() {
+
+        const { formularioComErros } = this.state
+
         return (
             <>
                 <div>
