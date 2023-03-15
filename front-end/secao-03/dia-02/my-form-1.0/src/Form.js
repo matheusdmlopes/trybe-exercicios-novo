@@ -15,8 +15,19 @@ class Form extends Component {
             option: '',
             caixinha: false,
             botao: '',
-            texto: ''
+            texto: '',
+            formularioComErros: false
         }
+    }
+
+    handleError() {
+
+        const { option, caixinha, botao, texto } = this.state;
+
+        const errors = [
+            
+        ]
+
     }
 
     handleChange({ target }) {
