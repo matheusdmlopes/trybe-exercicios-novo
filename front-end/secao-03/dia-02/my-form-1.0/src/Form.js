@@ -25,8 +25,17 @@ class Form extends Component {
         const { option, caixinha, botao, texto } = this.state;
 
         const errors = [
-            
+            !option.length,
+            !caixinha,
+            !botao.length,
+            !texto.length
         ]
+
+        const formularioPreenchido = errors.every((element) => element !== true)
+
+        this.setState({
+            formularioComErros: !formularioPreenchido,
+        })
 
     }
 
@@ -54,6 +63,9 @@ class Form extends Component {
                             </label>
                         </fieldset>
                     </form>
+                    { formularioComErros
+          ? <span style={ { color: 'red' } }>Preencha todos os campos</span>
+          : <span style={ { color: 'green' } }>Todos campos foram preenchidos</span> }
                 </div>
             </>
         )
