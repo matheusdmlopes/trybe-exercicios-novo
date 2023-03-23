@@ -21,16 +21,37 @@ test('Verificando se existe o campo email', () => {
 
 });
 
-test('Verificando se existe um botão', () => {
+test('Verificando se existe dois botões', () => {
   render(<App />)
   // ACESSANDO ELEMENTOS DA TELA
-  const getButton = screen.getByRole('button')
+  const getButton = screen.getAllByRole('button')
 
 // INTERAGINDO COM A APLICAÇÃO
 
 
 // TESTES
-  expect(getButton).toBeInTheDocument()
+  expect(getButton).toHaveLength(2)
+
+})
+
+test('Verificando se existe um botão de enviar E um botão de voltar', () =>{
+  render(<App />)
+  // ACESSANDO ELEMENTOS DA TELA
+  const btnEnviar = screen.getByTestId('botao-enviar')
+  const btnVoltar = screen.getByTestId('botao-voltar')
+
+  // INTERAGINDO COM A APLICAÇÃO
+
+
+  // TESTES
+  expect(btnEnviar).toBeInTheDocument()
+  expect(btnVoltar).toBeInTheDocument()
+
+  expect(btnEnviar.type).toBe('button')
+  expect(btnVoltar.type).toBe('button')
+
+  expect(btnEnviar).toHaveValue('Enviar')
+  expect(btnVoltar).toHaveValue('Voltar')
 
 })
 
@@ -41,4 +62,5 @@ test('Verificando se existe um botão', () => {
 
 
 // TESTES
+
 
