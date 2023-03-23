@@ -6,8 +6,10 @@ function App() {
     <div className="App">
       <label >
         Email
-        <input role="ab" type="email" />
+        <input type="email" />
       </label>
+      <input type="button" value="Enviar" />
+      <input type="button" value="Voltar" />
     </div>
   );
 }
