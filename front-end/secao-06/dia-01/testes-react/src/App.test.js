@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 
 test('Verificando se existe o campo email', () => {
   render(<App />);
@@ -59,7 +60,7 @@ test('Verificando se existe um botão de enviar E um botão de voltar', () =>{
 
 test('Testando se o botão e o campo email estão funcionando', () => {
   render(<App />)
-  const EMAIL = 'teste@teste.com'
+  const emailUser = 'teste@teste.com'
 
   // ACESSANDO ELEMENTOS DA TELA
   const getEmail = screen.getByLabelText('Email')
@@ -67,15 +68,18 @@ test('Testando se o botão e o campo email estão funcionando', () => {
   const getTextEmail = screen.getByTestId('id-email-user')
 
 // INTERAGINDO COM A APLICAÇÃO
-  userEvent.type(getEmail, EMAIL)
+  act(() => {
+  userEvent.type(getEmail, emailUser)
   userEvent.click(getBtn)
+})
+ 
 
 // TESTES
   expect(getEmail).toBeInTheDocument();
   expect(getBtn).toBeInTheDocument();
   expect(getTextEmail).toBeInTheDocument();
 
-  expect(getTextEmail).toHaveTextContent(`Valor: ${EMAIL}`)
+  expect(getTextEmail).toHaveTextContent(`Valor: ${emailUser}`)
   expect(getEmail).toHaveValue('');
   
 })
