@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import ValidEmail from './ValidEmail';
 
 
 class App extends Component {
@@ -8,8 +9,8 @@ class App extends Component {
     saveEmail: ''
   }
 
-  handleChange = ({target}) => {
-    const {value, name} = target;
+  handleChange = ({ target }) => {
+    const { value, name } = target;
 
     this.setState({
       [name]: value,
@@ -17,7 +18,7 @@ class App extends Component {
   }
 
   handleSaveEmail = () => {
-    const {email} = this.state;
+    const { email } = this.state;
     this.setState({
       saveEmail: email,
       email: ''
@@ -25,19 +26,20 @@ class App extends Component {
   }
 
   render() {
-    const {email, saveEmail} = this.state
-  return (
-    <div className="App">
-      <label >
-        Email
-        <input type="email" name='email' value={email} onChange={this.handleChange}/>
-      </label>
-      <input type="button" value="Enviar" data-testid="botao-enviar" onClick={this.handleSaveEmail} />
-      <input type="button" value="Voltar" data-testid="botao-voltar" />
-      <h2 data-testid="id-email-user">Valor: {saveEmail} </h2>
-    </div>
-  );
-}
+    const { email, saveEmail } = this.state
+    return (
+      <div className="App">
+        <label >
+          Email
+          <input type="email" name='email' value={email} onChange={this.handleChange} />
+        </label>
+        <input type="button" value="Enviar" data-testid="botao-enviar" onClick={this.handleSaveEmail} />
+        <input type="button" value="Voltar" data-testid="botao-voltar" />
+
+        <ValidEmail email={saveEmail} />
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -6,7 +6,7 @@ import { act } from 'react-dom/test-utils';
 
 test('Verificando se existe o campo email', () => {
   render(<App />);
-// ACESSANDO ELEMENTOS DA TELA
+  // ACESSANDO ELEMENTOS DA TELA
   const getInputByLabel = screen.getByLabelText('Email')
   const getInputByRole2 = screen.getByRole('textbox')
 
@@ -15,7 +15,7 @@ test('Verificando se existe o campo email', () => {
   // const getInputByRole = screen.getByRole('input') 
   // console.log(getInputByRole)
 
- // INTERAGINDO COM A APLICAÇÃO
+  // INTERAGINDO COM A APLICAÇÃO
 
   // TESTES
   expect(getInputByRole2.type).toBe('email')
@@ -29,15 +29,15 @@ test('Verificando se existe dois botões', () => {
   // ACESSANDO ELEMENTOS DA TELA
   const getButton = screen.getAllByRole('button')
 
-// INTERAGINDO COM A APLICAÇÃO
+  // INTERAGINDO COM A APLICAÇÃO
 
 
-// TESTES
+  // TESTES
   expect(getButton).toHaveLength(2)
 
 })
 
-test('Verificando se existe um botão de enviar E um botão de voltar', () =>{
+test('Verificando se existe um botão de enviar E um botão de voltar', () => {
   render(<App />)
   // ACESSANDO ELEMENTOS DA TELA
   const btnEnviar = screen.getByTestId('botao-enviar')
@@ -58,7 +58,7 @@ test('Verificando se existe um botão de enviar E um botão de voltar', () =>{
 
 })
 
-test('Testando se o botão e o campo email estão funcionando', () => {
+test('Testando se o botão e o campo email estão funcionando', async () => {
   render(<App />)
   const emailUser = 'teste@teste.com'
 
@@ -67,21 +67,21 @@ test('Testando se o botão e o campo email estão funcionando', () => {
   const getBtn = screen.getByTestId('botao-enviar')
   const getTextEmail = screen.getByTestId('id-email-user')
 
-// INTERAGINDO COM A APLICAÇÃO
+  // INTERAGINDO COM A APLICAÇÃO
   act(() => {
-  userEvent.type(getEmail, emailUser)
-  userEvent.click(getBtn)
-})
- 
+    userEvent.type(getEmail, emailUser)
+    userEvent.click(getBtn)
+  })
 
-// TESTES
+
+  // TESTES
   expect(getEmail).toBeInTheDocument();
   expect(getBtn).toBeInTheDocument();
   expect(getTextEmail).toBeInTheDocument();
 
   expect(getTextEmail).toHaveTextContent(`Valor: ${emailUser}`)
   expect(getEmail).toHaveValue('');
-  
+
 })
 
 // ACESSANDO ELEMENTOS DA TELA
