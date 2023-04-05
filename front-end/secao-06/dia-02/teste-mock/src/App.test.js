@@ -65,4 +65,5 @@ it('fetches a new joke when button is clicked', async () => {
   const getRenderedJoke2 = await screen.findByText('Sei lá.')
   expect(getRenderedJoke2).toBeInTheDocument();
   expect(screen.queryByText('Whiteboards ... are remarkable.')).not.toBeInTheDocument();
+  expect(global.fetch).toHaveBeenCalledTimes(2);
 });
