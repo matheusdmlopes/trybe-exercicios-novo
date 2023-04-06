@@ -20,7 +20,7 @@ test('deve renderizar o componente sobre', () => {
   const about = screen.getByRole('link', {
     name: 'Sobre'
   })
-  
+
   act(() => {
     userEvent.click(about)
   })
@@ -32,5 +32,18 @@ test('deve renderizar o componente sobre', () => {
 
   const aboutTitle = screen.getByRole('heading', {
     name: 'Você está na página Sobre'
+  })
+})
+
+it('caminho inexistente e not found', () => {
+  const {history} = renderWithRouter(<App />)
+
+  act(() => {
+    history.push('/sei-la')
+  })
+
+  const notFoundTitle = screen.getByRole('heading', {
+    name: 'Página não encontrada',
+    level:1
   })
 })
