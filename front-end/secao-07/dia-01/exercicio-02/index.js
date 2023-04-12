@@ -39,3 +39,19 @@ themeButton.addEventListener('click', () => {
 statusButton.addEventListener('click', () => {
     store.dispatch(action2)
 });
+
+store.subscribe(() => {
+    const { theme, status } = store.getState();
+    const getBody = document.body
+    const statusElement = document.getElementById('status')
+    const btnTheme = document.getElementById('toggle-theme')
+    const btnStatus = document.getElementById('toggle-status')
+
+    getBody.style.backgroundColor = theme === 'dark' ? 'black' : 'white'
+    getBody.style.color = theme === 'dark' ? 'white' : 'black'
+
+    statusElement.innerHTML = status === 'offline' ? 'Offline' : 'Online'
+
+    btnStatus.innerText = status === 'online' ? 'Ficar Offline' : 'Ficar Online'
+    btnTheme.innerText = theme === 'dark' ? 'Light Mode' : 'Dark Mode'
+})
