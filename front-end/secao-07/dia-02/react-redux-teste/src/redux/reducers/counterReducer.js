@@ -1,6 +1,8 @@
 // ./src/redux/reducers/counterReducer.js
+
 const INITIAL_STATE = {
     count: 0,
+    payload: 0,
 };
 
 function counterReducer(state = INITIAL_STATE, action) {
