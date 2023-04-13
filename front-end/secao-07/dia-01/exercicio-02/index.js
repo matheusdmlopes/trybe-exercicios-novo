@@ -47,7 +47,7 @@ store.subscribe(() => {
     const btnTheme = document.getElementById('toggle-theme')
     const btnStatus = document.getElementById('toggle-status')
 
-    getBody.style.backgroundColor = theme === 'dark' ? 'black' : 'white'
+    getBody.style.backgroundColor = theme === 'dark' ? '#333' : 'white'
     getBody.style.color = theme === 'dark' ? 'white' : 'black'
 
     statusElement.innerHTML = status === 'offline' ? 'Offline' : 'Online'
