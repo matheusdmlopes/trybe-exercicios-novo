@@ -30,7 +30,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  countState: state.count,
+  countState: state.counterReducer.count,
 });
 
 export default connect(mapStateToProps)(App);
