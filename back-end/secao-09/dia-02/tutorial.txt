@@ -1,0 +1,4 @@
+npm init -y
+npm install ts-node -D
+tsc node init
+npx ts-node index.ts
